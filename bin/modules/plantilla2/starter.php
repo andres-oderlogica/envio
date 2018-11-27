@@ -233,6 +233,11 @@ if($res == "Administrador")
             </a>
          </li>
 
+         <li class="treeview">
+            <a href="../sucursales/registro_sucursal.php"><i class="fa fa-edit"></i> <span> Sucursales</span>
+            </a>
+         </li>
+
           <li class="treeview"> 
             <a href="#"><i class="fa fa-dashboard"></i> <span>Docentes</span>
              <span class="pull-right-container">

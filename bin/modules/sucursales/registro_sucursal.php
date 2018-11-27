@@ -17,7 +17,7 @@ session_start();
   <head>    
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"> 
-   <title>Realizar Giro</title>
+   <title>Sucursales</title>
     
    <script src="../../../lib/js/jquery.js?v=<?php echo str_replace('.', '', microtime(true)); ?>"></script>
    <script src="../plantilla2/plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -27,8 +27,9 @@ session_start();
    <script src="../../../lib/bootbox.min.js"></script>
    <script src="../../../lib/bootstrap.min.js" data-semver="3.1.1" data-require="bootstrap"></script>
    <script src='../../../lib/data_table.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>
-  <script src='js/estudiante.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>
-  <script src='js/modal_editar_estudiante.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>  
+  <script src='js/sucursal.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>
+ <!-- <script src='js/tabla_sucursal.js?v=<?php //echo str_replace('.', '', microtime(true)); ?>'></script>-->
+  <script src='js/modal_editar_sucursal.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>  
   <link href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
    
   <link rel="stylesheet" href="../plantilla2/bootstrap/css/bootstrap.min.css">
@@ -80,68 +81,60 @@ session_start();
   ?> 
  
 <div class="container-fluid">
- <form id="form_estudiante" action="clases/control_estudiante.php">
-             <div class="col-md-6">
+ <form id="form_sucursal" action="clases/control_sucursal.php">
+             <div class="col-md-4">
                 <div class="panel panel-primary">
-                    <div class="panel-heading">Datos Personales</div>
+                    <div class="panel-heading">Registrar Sucursal</div>
                     <div class="panel-body"> 
                       <div class="col-md-12"> 
-                          <input class="form-control" id="identificacion" name="identificacion" placeholder="Identificacion" type="text" required><br>
+                          <input class="form-control" id="nombre_sucursal" name="nombre_sucursal" placeholder="Sucursal" type="text" required><br>
                       </div>
-                      <div class="col-md-12"> 
-                          <input class="form-control" required="true" id="primer_apellido" name="primer_apellido" placeholder="Primer Apellido" type="text" ><br>
-                      </div>
-                      <div class="col-md-12"> 
-                          <input class="form-control" id="segundo_apellido" name="segundo_apellido" placeholder="Segundo Apellido" type="text" ><br>
-                      </div>
-                      <div class="col-md-12">
-                          <input class="form-control" required="true" id="primer_nombre" name="primer_nombre" placeholder="Primer Nombre" type="text" ><br>
-                      </div>
-                      <div class="col-md-12">
-                          <input class="form-control" id="segundo_nombre" name="segundo_nombre" placeholder="Segundo Nombre" type="text" ><br>
-                      </div>
-                      <div class="col-md-12">
-                          <input class="form-control" id="discapacidad" name="discapacidad" placeholder="Discapacidad" type="text" ><br>
-                      </div>
-                      <div class="col-md-12">
-                          <label>Fecha de Nacimiento</label>
-                          <input class="form-control" type="date" name="fecha_nacimiento" placeholder="Correo" >   </div> 
 
-                               
-                        
-                    </div>
-                </div>
-            </div>
-               <div class="col-md-6">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Datos de contacto y acceso</div>
-                       <div class="panel-body">
-                            <div class="col-md-12">
-                               <input class="form-control" id="codigo" name="codigo" placeholder="Digita el codigo" type="text" ><br>
-                            </div> 
-                            <div class="col-md-12">
+                      <div class="col-md-12"> 
+                         <select class="form-control" id="id_pais" name="id_pais">
+                         </select><br>
+                      </div>
+
+                      <div class="col-md-12"> 
+                         <select class="form-control" id="id_ciudad" name="id_ciudad">
+                         </select><br>
+                      </div>
+
+                       <div class="col-md-12">
                                 <input class="form-control" id="telefono" name="telefono" placeholder="Telefono" type="text" ><br>
                             </div>
                             <div class="col-md-12">
                                 <input class="form-control" id="direccion" name="direccion" placeholder="Direccion" type="text" ><br>
                             </div>
                             <div class="col-md-12">
-                                <input class="form-control" id="email" name="email" placeholder="Correo" type="email" ><br>
-                            </div>                           
-                            <div class="col-md-12">
-                              <label>Nombre de Usuario</label>
-                                <input class="form-control" id="usuario" name="usuario" placeholder="Usuario" type="text" ><br>
-                                </div>                      
-                            <div class="col-md-3">                             
+                                <input class="form-control" id="movil" name="movil" placeholder="Correo" type="email" ><br>
+                            </div>      
+
+                      <div class="col-md-3">                             
                                 <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
                             </div> 
-                     
+                             
+                        
+                    </div>
+                </div>
+            </div>
+
+       </form>     
+               <div class="col-md-8">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Datos de contacto y acceso</div>
+                       <div class="panel-body">
+                                                 
+                            
+                         <div class="table-responsive"> 
+                         <div id="ver_cargas"></div>
+                         </div>
                   
                      
                     </div>
                 </div>
             </div>
-    </form>
+    
 </div>
 
  <?php
