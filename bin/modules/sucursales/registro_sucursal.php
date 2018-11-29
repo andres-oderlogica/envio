@@ -27,8 +27,10 @@ session_start();
    <script src="../../../lib/bootbox.min.js"></script>
    <script src="../../../lib/bootstrap.min.js" data-semver="3.1.1" data-require="bootstrap"></script>
    <script src='../../../lib/data_table.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>
+   <!--<script src='js/ciudad.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>-->
   <script src='js/sucursal.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>
- <!-- <script src='js/tabla_sucursal.js?v=<?php //echo str_replace('.', '', microtime(true)); ?>'></script>-->
+  <script src='js/tabla_sucursal.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>
+  
   <script src='js/modal_editar_sucursal.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>  
   <link href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
    
@@ -90,24 +92,36 @@ session_start();
                           <input class="form-control" id="nombre_sucursal" name="nombre_sucursal" placeholder="Sucursal" type="text" required><br>
                       </div>
 
-                      <div class="col-md-12"> 
-                         <select class="form-control" id="id_pais" name="id_pais">
+                    <!--  <div class="col-md-12"> 
+                        <label>Elija el Departamento</label>
+                         <select id="combo" class="form-control"  name="id_departamentos">
+                          <option value ="">---Elija una Opcion---</option>
                          </select><br>
                       </div>
 
                       <div class="col-md-12"> 
-                         <select class="form-control" id="id_ciudad" name="id_ciudad">
-                         </select><br>
-                      </div>
-
+                        <label>Elija la Ciudad</label>
+                         <select id="comboHijo" class="form-control"  name="id_ciudad">
+                        </select><br>
+                      </div>-->
+                      <div class="col-md-12">
+                                <input class="form-control" id="pais" name="pais" placeholder="Digite el Pais" type="text" ><br>
+                            </div>
+                      <div class="col-md-12">
+                                <input class="form-control" id="ciudad" name="ciudad" placeholder="Digite la Ciuadad" type="text" ><br>
+                            </div>
+                      <div class="col-md-12">
+                                <input class="form-control" id="direccion" name="direccion" placeholder="Digite la Direccion" type="text" ><br>
+                        </div>
                        <div class="col-md-12">
-                                <input class="form-control" id="telefono" name="telefono" placeholder="Telefono" type="text" ><br>
+                                <input class="form-control" id="telefono" name="telefono" placeholder="Digite el Telefono" type="text" ><br>
+                            </div>
+                            
+                            <div class="col-md-12">
+                                <input class="form-control" id="movil" name="movil" placeholder="Digite el Celular" type="text" ><br>
                             </div>
                             <div class="col-md-12">
-                                <input class="form-control" id="direccion" name="direccion" placeholder="Direccion" type="text" ><br>
-                            </div>
-                            <div class="col-md-12">
-                                <input class="form-control" id="movil" name="movil" placeholder="Correo" type="email" ><br>
+                                <input class="form-control" id="email" name="email" placeholder="Digite el Correo" type="email" ><br>
                             </div>      
 
                       <div class="col-md-3">                             
@@ -136,6 +150,10 @@ session_start();
             </div>
     
 </div>
+
+<?php
+include 'modal_editar_sucursal.php';
+?>
 
  <?php
    

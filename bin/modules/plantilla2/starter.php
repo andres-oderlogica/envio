@@ -238,8 +238,13 @@ if($res == "Administrador")
             </a>
          </li>
 
+         <li class="treeview">
+            <a href="../asignar_sucursal/asignar.php"><i class="fa fa-dashboard"></i> <span>Asignar Sucursales</span>
+            </a>
+         </li>
+
           <li class="treeview"> 
-            <a href="#"><i class="fa fa-dashboard"></i> <span>Docentes</span>
+            <a href="#"><i class="fa fa-dashboard"></i> <span>menu 1</span>
              <span class="pull-right-container">
                <i class="fa fa-angle-left pull-right"></i>
              </span>
@@ -251,7 +256,7 @@ if($res == "Administrador")
         </li>
 
         <li class="treeview"> 
-            <a href="#"><i class="fa fa-dashboard"></i> <span>Estudiantes</span>
+            <a href="#"><i class="fa fa-dashboard"></i> <span>menu 2</span>
              <span class="pull-right-container">
                <i class="fa fa-angle-left pull-right"></i>
              </span>
@@ -275,35 +280,11 @@ if($res == "Administrador")
             <li><a href="../docentexgrado/registro_docentexgrado.php"><i class="fa fa-circle-o text-red"></i>Docente x Grado</a></li>
           </ul>
         </li>
-        <li class="active"><a href="../matricula/registro_matricula.php"><i class="fa fa-edit"></i> <span>Matriculas</span></a></li>
-        <li><a href="../notas/registrar_notas.php"><i class="fa fa-book"></i> <span>Registrar Notas</span></a></li>
-        <!-- <li><a href="../../../login.php?logout"><i class="fa fa-link"></i> <span>Salir</span></a></li>-->
-       <!-- <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Administracion</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#">Link in level 2</a></li>
-            <li><a href="#">Link in level 2</a></li>
-          </ul>
-        </li>-->
+       
+       
         </li>
-      <!--  <li class="active"><a href="../matricula/registro_matricula.php"><i class="fa fa-edit"></i> <span>Matriculas</span></a></li>
-        <li><a href="../notas/registrar_notas.php"><i class="fa fa-book"></i> <span>Registrar Notas</span></a></li>-->
+     
 
-         <li class="treeview">
-            <a href="#"><i class="fa fa-dashboard"></i> <span>Boletines</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="../boletines/seleccion_datos.php"><i class="fa fa-circle-o text-red"></i>Generar Boletines General</a></li>
-            
-          </ul>
-        </li>
 
          <li class="treeview">
             <a href="#"><i class="fa fa-book"></i> <span>Reportes</span>

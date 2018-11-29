@@ -74,6 +74,7 @@ function verCargas()
            
             $('#myTable').DataTable({
                 sPaginationType: "bootstrap", 
+                order: [[ 0, "desc" ]],
                 //aLengthMenu: [100],
                 language: {sProcessing: "Procesando...",
                     sLengthMenu: "Mostrar _MENU_ registros",
@@ -104,7 +105,7 @@ function verCargas()
            // pag_data_table();
         },
          complete: function () {
-                loadingstop();
+              //  loadingstop();
                
             }
     });
@@ -113,7 +114,7 @@ function verCargas()
 function eliminar(id)
 {
 bootbox.confirm({
-    message: "Desea eliminar el estudiante ?",
+    message: "Desea eliminar la Sucursal ?",
     buttons: {
         confirm: {
             label: 'Si',
@@ -156,7 +157,7 @@ bootbox.confirm({
  verCargas()
 $(function ()
 {
-loadingstart();
+//loadingstart();
 
  });
 
@@ -171,19 +172,15 @@ function editar(id)
           })
       .done(function(data) {
       //console.log(data) 
-    $("#modal_id").val(data.id_estudiante);
-    $("#modal_codigo").val(data.codigo);
-    $("#modal_identificacion").val(data.identificacion);
-    $("#modal_primer_apellido").val(data.primer_apellido);
-    $("#modal_segundo_apellido").val(data.segundo_apellido);
-    $("#modal_primer_nombre").val(data.primer_nombre);
-    $("#modal_segundo_nombre").val(data.segundo_nombre);
+    $("#modal_id").val(data.id_sucursal);
+    $("#modal_nombre").val(data.nombre_sucursal);
+    $("#modal_pais").val(data.pais);
+    $("#modal_ciudad").val(data.ciudad);
     $("#modal_direccion").val(data.direccion);
     $("#modal_telefono").val(data.telefono);
+    $("#modal_movil").val(data.movil);
     $("#modal_email").val(data.email);
-    $("#modal_discapacidad").val(data.discapacidad);
-    $("#modal_fecha_nacimiento").val(data.fecha_nacimiento);
-    $("#modal_usuario").val(data.usuario);
+   
 	        
     });    
 

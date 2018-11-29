@@ -12,15 +12,15 @@ class comboCiudad
 	function getDepartamento()
 	{	  
        $sql="SELECT * 
-  			from paises
-  			order by Pais asc
+  			from departamentos
+  			order by descripcion asc
   			 ";
 		$rs = $this->db->dosql($sql, array()); 
         while (!$rs->EOF) 
            {
 	         $data[] = array(
-	         	'Codigo' => $rs->fields['Codigo'],
-	         	'Pais' => $rs->fields['Pais']
+	         	'id_departamentos' => $rs->fields['id_departamentos'],
+	         	'descripcion' => $rs->fields['descripcion']
 	         	);	                             
 	
 	          $rs->MoveNext();	    
@@ -32,18 +32,18 @@ class comboCiudad
 
 	function getCiudad($id)
 	{	
-	var_dump($id);  
+
        $sql="SELECT * 
-  			from ciudades
-  			where Paises_Codigo = ?
-  			order by Ciudad asc
+  			from ciudad
+  			where id_departaentos = ?
+  			order by descripcion_ciudad asc
   			 ";
 		$rs = $this->db->dosql($sql, array($id)); 
         while (!$rs->EOF) 
            {
 	         $data[] = array(
-	         	'idCiudades' => $rs->fields['idCiudades'],
-	         	'Ciudad' => $rs->fields['Ciudad']
+	         	'id_ciudad' => $rs->fields['id_ciudad'],
+	         	'descripcion_ciudad' => $rs->fields['descripcion_ciudad']
 	         	);	                             
 	
 	          $rs->MoveNext();	    

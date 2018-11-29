@@ -1,11 +1,11 @@
 <?php
 extract($_POST);
-include_once 'estudiante.php';
-$disc       = new regEstudiante();	
+include_once 'sucursal.php';
+$disc       = new regSucursal();	
 
 try
 {
-	$disc->reg_estudiante($codigo,$identificacion,$primer_apellido,$segundo_apellido,$primer_nombre,$segundo_nombre,$direccion,$telefono,$email,$discapacidad,$fecha_nacimiento, $usuario);
+	$disc->reg_sucursal($nombre_sucursal,$pais,$ciudad,$direccion,$telefono,$movil,$email);
 	//var_dump($codigo);
       echo json_encode(array('guardado' => TRUE));
 }

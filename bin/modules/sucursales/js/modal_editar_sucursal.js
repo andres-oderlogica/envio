@@ -9,25 +9,21 @@ $("#btn_save").click(function(){
     dataType: "json",
     data: {opcion:"3",
     id:$('#modal_id').val(),
-    codigo:$('#modal_codigo').val(),
-    identificacion:$('#modal_identificacion').val(),
-    primer_apellido:$('#modal_primer_apellido').val(),
-    segundo_apellido:$('#modal_segundo_apellido').val(),
-    primer_nombre:$('#modal_primer_nombre').val(),
-    segundo_nombre:$('#modal_segundo_nombre').val(),
+    nombre:$('#modal_nombre').val(),
+    pais:$('#modal_pais').val(),
+    ciudad:$('#modal_ciudad').val(),
     direccion:$('#modal_direccion').val(),
     telefono:$('#modal_telefono').val(),
+    movil:$('#modal_movil').val(),
     email:$('#modal_email').val(),
-    discapacidad:$('#modal_discapacidad').val(),
-    fecha_nacimiento:$('#modal_fecha_nacimiento').val(),
-    usuario:$('#modal_usuario').val()
+    estado:$('#modal_estado').val()
     },
     success: function (data) {               
       
                 
             },
             complete: function () {
-              parent.loadingstart();
+            //  parent.loadingstart();
               $('#myModal').modal('toggle');                
               parent.verCargas();              
             }

@@ -1,8 +1,20 @@
 <?php
 include '../../../../core.php';
 include 'class_ciudad.php';
+$com = new comboCiudad();
+$rst=$com->getDepartamento();
+           if($rst==null)
+              {
+              $res=json_encode(0);     
+              }
+                else
+                {
+                 $res=json_encode($rst);     
+                }   
+                   echo $res;
+                   var_dump($res);
 
-$opcion= $_POST['opcion'];
+/*$opcion= $_POST['opcion'];
 $id= $_POST['id'];
        
 $com = new comboCiudad();
@@ -40,7 +52,7 @@ $com = new comboCiudad();
        default:
          # code...
          break;
-     }   
+     }   */
        
 
 	?>

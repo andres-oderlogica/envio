@@ -1,22 +1,18 @@
 <?php
-include_once 'estudiante.php';
+include_once 'sucursal.php';
 $opcion = $_POST['opcion'];
 $id     = $_POST['id'];
-$codigo =$_POST['codigo'];
-$identificacion    = $_POST['identificacion'];
-$primer_apellido   = $_POST['primer_apellido'];
-$segundo_apellido  = $_POST['segundo_apellido'];
-$primer_nombre = $_POST['primer_nombre'];
-$segundo_nombre = $_POST['segundo_nombre'];
-$direccion    = $_POST['direccion'];
-$telefono    = $_POST['telefono'];
-$email   = $_POST['email'];
-$discapacidad = $_POST['discapacidad'];
-$usuario = $_POST['usuario'];
-$fecha_nacimiento = $_POST['fecha_nacimiento'];
-$estado = $_POST['estado'];
+$nombre =$_POST['nombre'];
+$pais    = $_POST['pais'];
+$ciudad   = $_POST['ciudad'];
+$direccion  = $_POST['direccion'];
+$telefono = $_POST['telefono'];
+$movil = $_POST['movil'];
+$email    = $_POST['email'];
+$estado    = $_POST['estado'];
+
 //extract($_POST);
-$disc   = new regEstudiante();
+$disc   = new regSucursal();
 //var_dump($id);
 switch ($opcion) {
 	case '1':
@@ -34,8 +30,8 @@ switch ($opcion) {
 		echo json_encode($res);		
 		break;
 		case '3':
-
-			$disc->editar($id,$codigo,$identificacion,$primer_apellido,$segundo_apellido,$primer_nombre,$segundo_nombre,$direccion,$telefono,$email,$discapacidad,$fecha_nacimiento, $usuario);
+		//var_dump($id);
+			$disc->editar($id,$nombre,$direccion,$telefono,$movil,$email,$pais,$ciudad, $estado);
 			break;
 	
 		case '4':
