@@ -243,7 +243,20 @@ if($res == "Administrador")
             </a>
          </li>
 
-          <li class="treeview"> 
+         <li class="treeview">
+            <a href="#"><i class="fa fa-book"></i> <span>Clientes</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            
+            <li> <a href="../clientes/registro_cliente.php"><i class="fa fa-circle-o text-red"></i>Registrar Clientes</a></li>
+            <li><a href="../clientes/listar_cliente.php"><i class="fa fa-circle-o text-red"></i>Listado Clientes</a></li>
+          </ul>
+        </li>
+
+           <!--       <li class="treeview"> 
             <a href="#"><i class="fa fa-dashboard"></i> <span>menu 1</span>
              <span class="pull-right-container">
                <i class="fa fa-angle-left pull-right"></i>
@@ -272,9 +285,9 @@ if($res == "Administrador")
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu">
+          <ul class="treeview-menu">-->
            <!-- <li><a href="../estudiante/registro_estudiante.php"><i class="fa fa-circle-o text-red"></i>Estudiantes</a></li>-->            
-            <li><a href="../grados/registro_grado.php"><i class="fa fa-circle-o text-red"></i>Grados</a></li>
+      <!--      <li><a href="../grados/registro_grado.php"><i class="fa fa-circle-o text-red"></i>Grados</a></li>
             <li><a href="../materia/registro_materia.php"><i class="fa fa-circle-o text-red"></i>Materias</a></li>
             <li><a href="../gradoxmateria/registro_gradoxmateria.php"><i class="fa fa-circle-o text-red"></i>Materias x Grado</a></li>
             <li><a href="../docentexgrado/registro_docentexgrado.php"><i class="fa fa-circle-o text-red"></i>Docente x Grado</a></li>
@@ -296,7 +309,7 @@ if($res == "Administrador")
             <li><a href="../boletines/seleccion_datos_promedio.php"><i class="fa fa-circle-o text-red"></i>Generar Consolidado de Notas</a></li>
             
           </ul>
-        </li>
+        </li>-->
 
       </ul>
 

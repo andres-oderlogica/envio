@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2018 a las 17:18:09
+-- Tiempo de generación: 29-11-2018 a las 03:47:42
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -1489,16 +1489,6 @@ CREATE TABLE `tbl_banco` (
   `descripcion` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `tbl_banco`
---
-
-INSERT INTO `tbl_banco` (`id_banco`, `descripcion`) VALUES
-(1, 'Banco de Bogota'),
-(2, 'Banco Popular'),
-(3, 'Banco Caja Social'),
-(4, 'Bancolombia');
-
 -- --------------------------------------------------------
 
 --
@@ -1509,21 +1499,12 @@ CREATE TABLE `tbl_cliente` (
   `id_cliente` int(11) NOT NULL,
   `id_tipo` int(11) DEFAULT NULL,
   `identificacion` varchar(105) DEFAULT NULL,
-  `nombres` varchar(200) DEFAULT NULL,
-  `apellidos` varchar(200) DEFAULT NULL,
   `direccion` varchar(90) DEFAULT NULL,
   `telefono` varchar(45) DEFAULT NULL,
   `correo` varchar(90) DEFAULT NULL,
   `id_banco` int(11) DEFAULT NULL,
   `numero_cuenta` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `tbl_cliente`
---
-
-INSERT INTO `tbl_cliente` (`id_cliente`, `id_tipo`, `identificacion`, `nombres`, `apellidos`, `direccion`, `telefono`, `correo`, `id_banco`, `numero_cuenta`) VALUES
-(1, 6, '123456', 'Andres', 'Florz', 'centro', '8222222', 'andres@gmail.com', 1, '123456');
 
 -- --------------------------------------------------------
 
@@ -1566,20 +1547,6 @@ CREATE TABLE `tbl_tipo_documento` (
   `id_tipo` int(11) NOT NULL,
   `descripcion` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `tbl_tipo_documento`
---
-
-INSERT INTO `tbl_tipo_documento` (`id_tipo`, `descripcion`) VALUES
-(1, 'Cedula de Ciudadania'),
-(2, 'Tarjeta de Identidad'),
-(3, 'Registro CIvil'),
-(4, 'Cedula Extranjero'),
-(5, 'Pasaporte'),
-(6, 'NIT'),
-(7, 'RUT'),
-(8, 'Otro');
 
 -- --------------------------------------------------------
 
@@ -1734,13 +1701,13 @@ ALTER TABLE `estado`
 -- AUTO_INCREMENT de la tabla `tbl_banco`
 --
 ALTER TABLE `tbl_banco`
-  MODIFY `id_banco` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_banco` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_cliente`
 --
 ALTER TABLE `tbl_cliente`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_sucursal`
@@ -1752,7 +1719,7 @@ ALTER TABLE `tbl_sucursal`
 -- AUTO_INCREMENT de la tabla `tbl_tipo_documento`
 --
 ALTER TABLE `tbl_tipo_documento`
-  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_usuarioxsucursal`
