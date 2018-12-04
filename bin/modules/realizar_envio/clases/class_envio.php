@@ -2,7 +2,7 @@
 include '../../../../core.php';
 include_once Config::$home_bin.Config::$ds.'db'.Config::$ds.'active_table.php'; 
  class Cliente extends ADOdb_Active_Record{}
-class regCliente
+class regEnvio
 {
 
 public function reg_cliente($tipo,$identificacion,$nombres,$apellidos,$direccion,$telefono,$correo, $banco, $cuenta)  
@@ -123,36 +123,114 @@ public function listCliente()
 
 }
 
+
+public function listEnvioModal()
+{
+  $con = App::$base;
+    $sql = "SELECT 
+            `tbl_cliente`.`id_cliente`,            
+            `tbl_cliente`.`identificacion`,
+             CONCAT(`tbl_cliente`.`nombres`,' ',
+            `tbl_cliente`.`apellidos`) AS completo,           
+            `tbl_banco`.`descripcion` as banco,
+            `tbl_cliente`.`numero_cuenta`,             
+               \"
+              <button type=\'button\' class=\'btn btn-danger btn-sm btn_delete\' data-title=\'Edit\'>
+               <span class=\'glyphicon glyphicon-trash\'></span></button>
+               </div>
+                \"
+                 as ir                    
+            FROM
+              `tbl_banco`
+              INNER JOIN `tbl_cliente` ON (`tbl_banco`.`id_banco` = `tbl_cliente`.`id_banco`)
+              INNER JOIN `tbl_tipo_documento` ON (`tbl_cliente`.`id_tipo` = `tbl_tipo_documento`.`id_tipo`)
+            ";
+
+    $rs = $con->dosql($sql, array());
+        $tabla = '<table id="myTable" class="table table-hover table-striped table-bordered table-condensed" cellpadding="0" cellspacing="0" border="1" class="display" >
+                        <thead>
+                        <tr>
+                        <th id="yw9_c0">#</th>
+                        <th id="yw9_c2">Identificacion</th>
+                        <th id="yw9_c6">Nombre Completo</th>
+                        <th id="yw9_c8">Elegir</th>
+                        </tr>
+                        </thead>
+                        <tbody>';
+              while (!$rs->EOF) 
+                   {
+                                          
+                    $tabla.='<tr >  
+                            <td>                            
+                                '.utf8_encode($rs->fields['id_cliente']).'
+                            </td>
+                            
+                            <td>                            
+                                '.utf8_encode($rs->fields['identificacion']).'
+                            </td>
+                            <td>                            
+                                '.utf8_encode($rs->fields['completo']).'
+                            </td>                     
+                            <td align="center" width= "30" onclick="llenar_campos('.$rs->fields['id_cliente'].')">                            
+                                '.utf8_encode($rs->fields['ir']).'
+                            </td>' ;                                                                               
+                            
+            $tabla.= '</tr>';                                     
+  
+                 $rs->MoveNext();     
+                   }  
+            
+        $tabla.="</tbody></table>";
+        return $tabla;
+
+}
+
 public function eliminar($id)
 {
-    $reg              = new Sucursal('tbl_sucursal');
-    $reg->load("id_sucursal = {$id}");
+    $reg              = new Cliente('tbl_cliente');
+    $reg->load("id_cliente = {$id}");
     $reg->Delete();
 }
 
 
 
-  public function editar($id,$nombre,$direccion,$telefono,$movil,$email,$pais,$ciudad,$estado)
+  public function editar($id,$identificacion,$nombres,$apellidos,$direccion,$telefono,$correo,$banco, $cuenta)
     {
 
-        $reg              = new Sucursal('tbl_sucursal');
-        $reg->load("id_sucursal = {$id}");
-        $reg->nombre_sucursal   =$nombre;        
+        $reg              = new Cliente('tbl_cliente');
+        $reg->load("id_cliente = {$id}");
+       // $reg->id_tipo   =$tipo;               
+        $reg->identificacion = $identificacion;
+        $reg->nombres = $nombres;
+        $reg->apellidos = $apellidos;
         $reg->direccion = $direccion;
-        $reg->telefono = $telefono;
-        $reg->movil = $movil;
-        $reg->email = $email;
-        $reg->pais      = $pais;
-        $reg->ciudad = $ciudad;
-        if($estado == -1)
-        {        
+        $reg->telefono      = $telefono;
+        $reg->correo = $correo;   
+        $reg->id_banco = $banco;             
+        $reg->numero_cuenta = $cuenta;         
         $reg->Save();
-        }
-        else
-        {
-       // var_dump($reg);
-        $reg->id_estado = $estado; 
-        $reg->Save();}
+      
+
+        //
+        //return $reg->id_estudiante;
+    }
+
+     public function editar1($id,$identificacion,$nombres,$apellidos,$direccion,$telefono,$correo, $cuenta)
+    {
+//var_dump($cuenta);
+        $reg              = new Cliente('tbl_cliente');
+        $reg->load("id_cliente = {$id}");           
+        $reg->identificacion = $identificacion;
+        $reg->nombres = $nombres;
+        $reg->apellidos = $apellidos;
+        $reg->direccion = $direccion;
+        $reg->telefono      = $telefono;
+        $reg->correo = $correo;                     
+        $reg->numero_cuenta = $cuenta;         
+        $reg->Save();
+      
+//var_dump($reg);
+        //
         //return $reg->id_estudiante;
     }
 
@@ -161,24 +239,35 @@ public function eliminar($id)
   {
     $db = App::$base;
         $sql = "SELECT 
-                *
+                `tbl_cliente`.`id_cliente`,
+                `tbl_cliente`.`identificacion`,
+                CONCAT(`tbl_cliente`.`nombres`,' ',
+                `tbl_cliente`.`apellidos`) as nombre_completo,
+                `tbl_cliente`.`direccion`,
+                `tbl_cliente`.`telefono`,
+                `tbl_cliente`.`correo`,
+                `tbl_cliente`.`id_banco`,
+                `tbl_cliente`.`numero_cuenta`,
+                `tbl_banco`.`descripcion`
               FROM
-                tbl_sucursal
-               WHERE `id_sucursal`= ?";
+                `tbl_banco`
+                INNER JOIN `tbl_cliente` ON (`tbl_banco`.`id_banco` = `tbl_cliente`.`id_banco`)
+               WHERE `id_cliente`= ?";
     $rs = $db->dosql($sql, array($id));
 
     while (!$rs->EOF) 
                    {
 
                     $res = array( 
-                      "id_sucursal"  => $id,//$rs->fields['id_estudiante'],
-                      "nombre_sucursal"  => $rs->fields['nombre_sucursal'],
-                      "pais"      => $rs->fields['pais'],
-                      "ciudad" => $rs->fields['ciudad'],
+                      "id_cliente"  => $id,//$rs->fields['id_estudiante'],
+                      "identificacion"  => $rs->fields['identificacion'],
+                      "nombre"      => $rs->fields['nombre_completo'],
+                      "apellidos" => $rs->fields['apellidos'],
                       "direccion"  =>$rs->fields['direccion'],
                       "telefono" => $rs->fields['telefono'],
-                      "movil" => $rs->fields['movil'],
-                      "email" => $rs->fields['email']
+                      "correo" => $rs->fields['correo'],
+                      "numero_cuenta" => $rs->fields['numero_cuenta'],
+                      "descripcion" => $rs->fields['descripcion']
                       );
 
                     $rs->MoveNext();      

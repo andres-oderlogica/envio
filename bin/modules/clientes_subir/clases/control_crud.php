@@ -1,18 +1,19 @@
 <?php
-include_once 'sucursal.php';
+include_once 'class_cliente.php';
 $opcion = $_POST['opcion'];
 $id     = $_POST['id'];
-$nombre =$_POST['nombre'];
-$pais    = $_POST['pais'];
-$ciudad   = $_POST['ciudad'];
+//$tipo = $_POST['id_tipo'];
+$identificacion = $_POST['identificacion'];
+$nombres =$_POST['nombres'];
+$apellidos    = $_POST['apellidos'];
 $direccion  = $_POST['direccion'];
 $telefono = $_POST['telefono'];
-$movil = $_POST['movil'];
-$email    = $_POST['email'];
-$estado    = $_POST['estado'];
+$correo = $_POST['correo'];
+$banco    = $_POST['id_banco'];
+$cuenta    = $_POST['numero_cuenta'];
 
 //extract($_POST);
-$disc   = new regSucursal();
+$disc   = new regCliente();
 //var_dump($id);
 switch ($opcion) {
 	case '1':
@@ -30,8 +31,12 @@ switch ($opcion) {
 		echo json_encode($res);		
 		break;
 		case '3':
-		//var_dump($id);
-			$disc->editar($id,$nombre,$direccion,$telefono,$movil,$email,$pais,$ciudad, $estado);
+		//var_dump($banco);
+		if($banco != "-1")		
+			$disc->editar($id,$identificacion,$nombres,$apellidos,$direccion,$telefono,$correo, $banco,$cuenta);		
+		else			
+			$disc->editar1($id,$identificacion,$nombres,$apellidos,$direccion,$telefono,$correo,$cuenta);
+		
 			break;
 	
 		case '4':

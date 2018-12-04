@@ -114,7 +114,7 @@ function verCargas()
 function eliminar(id)
 {
 bootbox.confirm({
-    message: "Desea eliminar la Sucursal ?",
+    message: "Desea eliminar el Cliente ?",
     buttons: {
         confirm: {
             label: 'Si',
@@ -172,16 +172,15 @@ function editar(id)
           })
       .done(function(data) {
       //console.log(data) 
-    $("#modal_id").val(data.id_sucursal);
-    $("#modal_nombre").val(data.nombre_sucursal);
-    $("#modal_pais").val(data.pais);
-    $("#modal_ciudad").val(data.ciudad);
-    $("#modal_direccion").val(data.direccion);
-    $("#modal_telefono").val(data.telefono);
-    $("#modal_movil").val(data.movil);
-    $("#modal_email").val(data.email);
-   
-	        
+    $("#modal_id").val(data.id_cliente);
+    $("#identificacion").val(data.identificacion);
+    $("#nombres").val(data.nombres);
+    $("#apellidos").val(data.apellidos);    
+    $("#direccion").val(data.direccion);
+    $("#telefono").val(data.telefono);
+    $("#correo").val(data.correo);
+    $("#numero_cuenta").val(data.numero_cuenta);
+           
     });    
 
      

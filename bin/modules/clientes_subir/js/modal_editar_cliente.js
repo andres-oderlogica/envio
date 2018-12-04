@@ -9,14 +9,15 @@ $("#btn_save").click(function(){
     dataType: "json",
     data: {opcion:"3",
     id:$('#modal_id').val(),
-    nombre:$('#modal_nombre').val(),
-    pais:$('#modal_pais').val(),
-    ciudad:$('#modal_ciudad').val(),
-    direccion:$('#modal_direccion').val(),
-    telefono:$('#modal_telefono').val(),
-    movil:$('#modal_movil').val(),
-    email:$('#modal_email').val(),
-    estado:$('#modal_estado').val()
+    //id_tipo:$('#id_tipo').val(),
+    identificacion:$('#identificacion').val(),
+    nombres:$('#nombres').val(),
+    apellidos:$('#apellidos').val(),
+    direccion:$('#direccion').val(),
+    telefono:$('#telefono').val(),
+    correo:$('#correo').val(),
+    id_banco:$('#id_banco').val(),
+    numero_cuenta:$('#numero_cuenta').val()
     },
     success: function (data) {               
       

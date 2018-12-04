@@ -256,6 +256,19 @@ if($res == "Administrador")
           </ul>
         </li>
 
+        <li class="treeview">
+            <a href="#"><i class="fa fa-book"></i> <span>Envios</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            
+            <li> <a href="../realizar_envio/registro_envio.php"><i class="fa fa-circle-o text-red"></i>Realizar Envio</a></li>
+            <li><a href="../realizar_envio/listar_envio.php"><i class="fa fa-circle-o text-red"></i>Listado Envios</a></li>
+          </ul>
+        </li>
+
            <!--       <li class="treeview"> 
             <a href="#"><i class="fa fa-dashboard"></i> <span>menu 1</span>
              <span class="pull-right-container">
