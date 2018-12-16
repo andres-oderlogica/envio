@@ -30,6 +30,7 @@ session_start();
    <!--<script src='js/ciudad.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>-->
   <script src='js/envio.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>
   <script src='js/tabla_envio.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>
+  <script src='js/tabla_envio_beneficiario.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>
   <script src='js/combo.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>
   
   <script src='js/modal_editar_envio.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>  
@@ -99,7 +100,7 @@ session_start();
                     </div>
                        <div class="col-md-12">    
                        <br>       
-                        <input type="hidden" id="id_cliente_rem">                                 
+                        <input type="hidden" id="id_cliente_rem" name="id_cliente_rem">                                 
                             <input class="form-control" id="nombre" placeholder="Cliente" type="text" disabled><br>         
                       </div>
                       <div class="col-md-12">                                            
@@ -143,7 +144,7 @@ session_start();
                     </div>
                        <div class="col-md-12"> 
                        <br> 
-                       <input type="hidden" id="id_cliente_ben">                                          
+                       <input type="hidden" id="id_cliente_ben" name="id_cliente_ben">                                          
                             <input class="form-control" id="nombre_ben" placeholder="Cliente" type="text" disabled><br>         
                       </div>
                       <div class="col-md-12">                                            

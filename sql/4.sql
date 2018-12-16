@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-12-2018 a las 15:04:48
+-- Tiempo de generación: 29-11-2018 a las 17:18:09
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -1523,57 +1523,7 @@ CREATE TABLE `tbl_cliente` (
 --
 
 INSERT INTO `tbl_cliente` (`id_cliente`, `id_tipo`, `identificacion`, `nombres`, `apellidos`, `direccion`, `telefono`, `correo`, `id_banco`, `numero_cuenta`) VALUES
-(1, 1, '123456', 'Andres', 'Florez', 'Avenida 12 a', '8222222', 'andres@gmail.com', 4, '123456'),
-(2, 1, '10302522', 'Carlos Armando', 'Casas Diaz', 'Calle 23 No 23-25', '3148569898', 'carlos@gmail.com', 1, '00000098653245');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbl_config`
---
-
-CREATE TABLE `tbl_config` (
-  `id_config` int(11) NOT NULL,
-  `tasa_dia` double NOT NULL,
-  `nombre_empresa` varchar(100) DEFAULT NULL,
-  `nit` varchar(45) DEFAULT NULL,
-  `telefono` varchar(45) DEFAULT NULL,
-  `correo` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `tbl_config`
---
-
-INSERT INTO `tbl_config` (`id_config`, `tasa_dia`, `nombre_empresa`, `nit`, `telefono`, `correo`) VALUES
-(1, 6.5, 'EXPRESSCOIN', NULL, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbl_factura`
---
-
-CREATE TABLE `tbl_factura` (
-  `id_factura` int(11) NOT NULL,
-  `id_cliente_rem` int(11) DEFAULT NULL,
-  `id_cliente_ben` int(11) DEFAULT NULL,
-  `fecha` date DEFAULT NULL,
-  `hora` varchar(20) DEFAULT NULL,
-  `descripcion` text,
-  `total_pesos` double DEFAULT NULL,
-  `total_bfs` double DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `tbl_factura`
---
-
-INSERT INTO `tbl_factura` (`id_factura`, `id_cliente_rem`, `id_cliente_ben`, `fecha`, `hora`, `descripcion`, `total_pesos`, `total_bfs`) VALUES
-(1, 1, 1, '2018-12-04', '07:09:30', 'Esta es una prueba', 1000000, 900000),
-(2, 1, 1, '2018-12-04', '07:21:00', '1', 1, 1),
-(3, 1, 1, '2018-12-04', '07:22 PM', '1', 1, 1),
-(4, 2, 1, '2018-12-04', '08:23 PM', 'Que llegue en horas de la tarde', 2000000, 1890000);
+(1, 6, '123456', 'Andres', 'Florz', 'centro', '8222222', 'andres@gmail.com', 1, '123456');
 
 -- --------------------------------------------------------
 
@@ -1604,7 +1554,7 @@ INSERT INTO `tbl_sucursal` (`id_sucursal`, `nombre_sucursal`, `id_pais`, `id_ciu
 (3, 'segunda', NULL, NULL, 'centro', '8222222', '1234', 'juanandres12102018@gmail.com', 'Colombia', 'Popayan', 1),
 (4, 'Tercera', NULL, NULL, 'Avenida 12 a 22', '8232525', '1234', 'tercera@gmail.com', 'Venezuela', 'Caracas', 1),
 (5, 'segunda', NULL, NULL, 'centro', '8222222', '1234', 'juanandres12102018@gmail.com', 'Colombia', 'Popayan', 1),
-(6, 'cuarta', NULL, NULL, 'centro', '8333', '1234', 'primeraa@gmail.com', 'Colombia', 'Popayan', 1);
+(6, 'cuarta', NULL, NULL, 'centro', '8222222', '1234', 'primeraa@gmail.com', 'Colombia', 'Popayan', 1);
 
 -- --------------------------------------------------------
 
@@ -1728,20 +1678,6 @@ ALTER TABLE `tbl_cliente`
   ADD KEY `idx_banco_idx` (`id_banco`);
 
 --
--- Indices de la tabla `tbl_config`
---
-ALTER TABLE `tbl_config`
-  ADD PRIMARY KEY (`id_config`);
-
---
--- Indices de la tabla `tbl_factura`
---
-ALTER TABLE `tbl_factura`
-  ADD PRIMARY KEY (`id_factura`),
-  ADD KEY `idx_fk_cliente_rem_idx` (`id_cliente_rem`),
-  ADD KEY `idx_fk_cliente_ben_idx` (`id_cliente_ben`);
-
---
 -- Indices de la tabla `tbl_sucursal`
 --
 ALTER TABLE `tbl_sucursal`
@@ -1804,19 +1740,7 @@ ALTER TABLE `tbl_banco`
 -- AUTO_INCREMENT de la tabla `tbl_cliente`
 --
 ALTER TABLE `tbl_cliente`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `tbl_config`
---
-ALTER TABLE `tbl_config`
-  MODIFY `id_config` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `tbl_factura`
---
-ALTER TABLE `tbl_factura`
-  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_sucursal`
@@ -1858,13 +1782,6 @@ ALTER TABLE `ciudad`
 ALTER TABLE `tbl_cliente`
   ADD CONSTRAINT `idx_banco` FOREIGN KEY (`id_banco`) REFERENCES `tbl_banco` (`id_banco`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `idx_tipo` FOREIGN KEY (`id_tipo`) REFERENCES `tbl_tipo_documento` (`id_tipo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `tbl_factura`
---
-ALTER TABLE `tbl_factura`
-  ADD CONSTRAINT `idx_fk_cliente_ben` FOREIGN KEY (`id_cliente_ben`) REFERENCES `tbl_cliente` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `idx_fk_cliente_rem` FOREIGN KEY (`id_cliente_rem`) REFERENCES `tbl_cliente` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `tbl_sucursal`

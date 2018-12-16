@@ -6,7 +6,7 @@
     <div class="container-fluid">
     <div class="col-md-12">
                 <div class="panel panel-primary">
-                    <div class="panel-heading">Datos de contacto y acceso</div>
+                    <div class="panel-heading">Tabla Clientes</div>
                        <div class="panel-body">               
                          <div class="table-responsive"> 
                             <div id="ver_cargasModal"></div>

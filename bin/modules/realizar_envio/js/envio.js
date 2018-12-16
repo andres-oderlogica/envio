@@ -2,10 +2,10 @@
 $(function ()
 {
 //loadingstart();
-$('#form_cliente').submit(function (e)
+$('#form_envio').submit(function (e)
     {
         e.preventDefault();        
-        var data = new FormData($("#form_cliente")[0]);
+        var data = new FormData($("#form_envio")[0]);
         $.ajax({
             url: $(this).attr('action'),
             type: 'POST',
@@ -26,14 +26,22 @@ $('#form_cliente').submit(function (e)
             },
             complete: function () {
               
-                $('#identificacion').val("")  
-                $('#nombres').val("")                     
-                $('#apellidos').val("")
-                $('#direccion').val("")
+                $('#identificacion').val("") 
+                $('#nombre').val("") 
+                $('#id_cliente_rem').val("")
                 $('#telefono').val("")
                 $('#correo').val("")
-              //  $('#id_banco').val("")
-                $('#numero_cuenta').val("")
+                $('#total_pesos').val("")                     
+                $('#total_bfs').val("")
+                $('#direccion').val("")
+                $('#identificacion_ben').val("") 
+                $('#nombre_ben').val("") 
+                $('#id_cliente_ben').val("")
+                $('#telefono_ben').val("")
+                $('#correo_ben').val("")                
+                $('#banco_ben').val("")
+                $('#cuenta_ben').val("")
+                $('#descripcion').val("")
             
             }
         });
