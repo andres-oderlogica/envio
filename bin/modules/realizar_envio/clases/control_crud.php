@@ -60,6 +60,10 @@ switch ($opcion) {
 					
 				}	
 			break;
+			case '6':
+				$res = $disc->consultaTasa();
+				echo json_encode($res);
+				break;
 }
 
 ?>

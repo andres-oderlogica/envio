@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-12-2018 a las 00:06:32
--- Versión del servidor: 10.1.36-MariaDB
--- Versión de PHP: 7.2.11
+-- Tiempo de generación: 16-12-2018 a las 15:04:48
+-- Versión del servidor: 10.1.30-MariaDB
+-- Versión de PHP: 7.2.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -1546,7 +1546,7 @@ CREATE TABLE `tbl_config` (
 --
 
 INSERT INTO `tbl_config` (`id_config`, `tasa_dia`, `nombre_empresa`, `nit`, `telefono`, `correo`) VALUES
-(1, 6.2, 'EXPRESSCOIN', '8001754848', '8222222', 'carlos@gmail.com');
+(1, 6.5, 'EXPRESSCOIN', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1562,17 +1562,18 @@ CREATE TABLE `tbl_factura` (
   `hora` varchar(20) DEFAULT NULL,
   `descripcion` text,
   `total_pesos` double DEFAULT NULL,
-  `total_bfs` double DEFAULT NULL,
-  `id_usuario` int(11) DEFAULT NULL
+  `total_bfs` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbl_factura`
 --
 
-INSERT INTO `tbl_factura` (`id_factura`, `id_cliente_rem`, `id_cliente_ben`, `fecha`, `hora`, `descripcion`, `total_pesos`, `total_bfs`, `id_usuario`) VALUES
-(1, 1, 2, '2018-12-17', '09:19 PM', 'prueba de envio', 1000000, 153846.15384615384, 1),
-(2, 1, 2, '2018-12-22', '10:54 AM', 'se envio con exito', 1000000, 153846.15384615384, 1);
+INSERT INTO `tbl_factura` (`id_factura`, `id_cliente_rem`, `id_cliente_ben`, `fecha`, `hora`, `descripcion`, `total_pesos`, `total_bfs`) VALUES
+(1, 1, 1, '2018-12-04', '07:09:30', 'Esta es una prueba', 1000000, 900000),
+(2, 1, 1, '2018-12-04', '07:21:00', '1', 1, 1),
+(3, 1, 1, '2018-12-04', '07:22 PM', '1', 1, 1),
+(4, 2, 1, '2018-12-04', '08:23 PM', 'Que llegue en horas de la tarde', 2000000, 1890000);
 
 -- --------------------------------------------------------
 
@@ -1738,8 +1739,7 @@ ALTER TABLE `tbl_config`
 ALTER TABLE `tbl_factura`
   ADD PRIMARY KEY (`id_factura`),
   ADD KEY `idx_fk_cliente_rem_idx` (`id_cliente_rem`),
-  ADD KEY `idx_fk_cliente_ben_idx` (`id_cliente_ben`),
-  ADD KEY `idx_sucursal_fk_idx` (`id_usuario`);
+  ADD KEY `idx_fk_cliente_ben_idx` (`id_cliente_ben`);
 
 --
 -- Indices de la tabla `tbl_sucursal`
@@ -1816,7 +1816,7 @@ ALTER TABLE `tbl_config`
 -- AUTO_INCREMENT de la tabla `tbl_factura`
 --
 ALTER TABLE `tbl_factura`
-  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_sucursal`
@@ -1864,8 +1864,7 @@ ALTER TABLE `tbl_cliente`
 --
 ALTER TABLE `tbl_factura`
   ADD CONSTRAINT `idx_fk_cliente_ben` FOREIGN KEY (`id_cliente_ben`) REFERENCES `tbl_cliente` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `idx_fk_cliente_rem` FOREIGN KEY (`id_cliente_rem`) REFERENCES `tbl_cliente` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `idx_sucursal_fk` FOREIGN KEY (`id_usuario`) REFERENCES `users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `idx_fk_cliente_rem` FOREIGN KEY (`id_cliente_rem`) REFERENCES `tbl_cliente` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `tbl_sucursal`

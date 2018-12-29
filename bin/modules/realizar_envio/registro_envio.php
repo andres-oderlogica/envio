@@ -122,7 +122,7 @@ session_start();
                                           <input class="form-control" id="total_pesos" name="total_pesos" placeholder="Total Pesos" type="number" step="any" required><br>         
                                          </div>
                                         <div class="col-md-12">                                            
-                                           <input class="form-control" id="total_bfs" name="total_bfs" placeholder="Total BSS" type="text" >        
+                                           <input class="form-control" id="total_bfs" name="total_bfs" placeholder="Total BSS" type="number" step="any">        
                                          </div>                                            
                                   </div>
                           </div>

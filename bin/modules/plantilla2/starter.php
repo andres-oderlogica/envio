@@ -269,6 +269,11 @@ if($res == "Administrador")
           </ul>
         </li>
 
+        <li class="treeview">
+            <a href="../sistema/sistema.php"><i class="fa fa-dashboard"></i> <span>Configuracion</span>
+            </a>
+         </li>
+
            <!--       <li class="treeview"> 
             <a href="#"><i class="fa fa-dashboard"></i> <span>menu 1</span>
              <span class="pull-right-container">

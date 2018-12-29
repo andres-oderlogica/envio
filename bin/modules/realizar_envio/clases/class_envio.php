@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../../../../core.php';
 include_once Config::$home_bin.Config::$ds.'db'.Config::$ds.'active_table.php'; 
  class Factura extends ADOdb_Active_Record{}
@@ -22,26 +23,27 @@ public function reg_factura($cliente_rem,$cliente_ben,$descripcion,$total_pesos,
         $reg->descripcion = $descripcion;
         $reg->total_pesos = $total_pesos;
         $reg->total_bfs = $total_bss; 
+        $reg->id_usuario = $_SESSION['user_id']; 
         $reg->Save();
          //var_dump($reg);
         //return $reg->id_estudiante;
     }
 
 
-public function listCliente()
+public function listEnvio()
 {
 	$con = App::$base;
     $sql = "SELECT 
-            `tbl_cliente`.`id_cliente`,
-            `tbl_tipo_documento`.`descripcion` as tipo,
-            `tbl_cliente`.`identificacion`,
-             CONCAT(`tbl_cliente`.`nombres`,' ',
-            `tbl_cliente`.`apellidos`) AS completo,
-            `tbl_cliente`.`direccion`,
-            `tbl_cliente`.`telefono`,
-            `tbl_cliente`.`correo`,
-            `tbl_banco`.`descripcion` as banco,
-            `tbl_cliente`.`numero_cuenta`,                   
+            `tbl_factura`.`id_factura`,
+            `tbl_factura`.`fecha`,
+            `tbl_factura`.`hora`,
+            CONCAT('$ ',`tbl_factura`.`total_pesos`) as total,
+            `tbl_sucursal`.`nombre_sucursal`,
+            `tbl_sucursal`.`id_pais`,
+            `tbl_factura`.`id_cliente_rem`,
+            CONCAT(`tbl_cliente`.`nombres`,' ',
+            `tbl_cliente`.`apellidos`) as remitente,
+            `tbl_sucursal`.`pais`,                   
                \"
               <button type=\'button\' class=\'btn btn-primary btn-sm btn_edit\' data-title=\'Edit\' data-toggle=\'modal\' data-target=\'#myModal\' >
                <span class=\'glyphicon glyphicon-pencil\'></span></button>
@@ -54,23 +56,25 @@ public function listCliente()
                </div>
                 \"
                  as borrar                    
-            FROM
-              `tbl_banco`
-              INNER JOIN `tbl_cliente` ON (`tbl_banco`.`id_banco` = `tbl_cliente`.`id_banco`)
-              INNER JOIN `tbl_tipo_documento` ON (`tbl_cliente`.`id_tipo` = `tbl_tipo_documento`.`id_tipo`)
+              FROM
+                  `tbl_factura`
+                  INNER JOIN `users` ON (`users`.`user_id` = `tbl_factura`.`id_usuario`)
+                  INNER JOIN `tbl_usuarioxsucursal` ON (`users`.`user_id` = `tbl_usuarioxsucursal`.`id_user`)
+                  INNER JOIN `tbl_sucursal` ON (`tbl_usuarioxsucursal`.`id_sucursal` = `tbl_sucursal`.`id_sucursal`)
+                  INNER JOIN `tbl_cliente` ON (`tbl_factura`.`id_cliente_rem` = `tbl_cliente`.`id_cliente`)
             ";
 
 		$rs = $con->dosql($sql, array());
-        $tabla = '<table id="myTable" class="table table-hover table-striped table-bordered table-condensed" cellpadding="0" cellspacing="0" border="1" class="display" >
+        $tabla = '<table id="myTable3" class="table table-hover table-striped table-bordered table-condensed" cellpadding="0" cellspacing="0" border="1" class="display" >
                         <thead>
                         <tr>
                         <th id="yw9_c0">#</th>
-                        <th id="yw9_c1">Tipo Doc</th>
-                        <th id="yw9_c2">Identificacion</th>
-                        <th id="yw9_c6">Nombre Completo</th>
-                        <th id="yw9_c6">Direccion</th>
-                        <th id="yw9_c6">Telefono</th>
-                        <th id="yw9_c6">Correo</th>
+                        <th id="yw9_c1">Fecha</th>
+                        <th id="yw9_c2">Hora</th>
+                        <th id="yw9_c6">Sucursal</th>
+                        <th id="yw9_c6">Pais</th>
+                        <th id="yw9_c6">Remitente</th>
+                        <th id="yw9_c6">Total Envio</th>
                         <th id="yw9_c7">Editar</th>
                         <th id="yw9_c8">Eliminar</th>
                         </tr>
@@ -86,25 +90,25 @@ public function listCliente()
                       
                    	$tabla.='<tr >  
                             <td>                            
-                                '.utf8_encode($rs->fields['id_cliente']).'
+                                '.utf8_encode($rs->fields['id_factura']).'
                             </td>
                             <td>                            
-                                '.utf8_encode($rs->fields['tipo']).'
+                                '.utf8_encode($rs->fields['fecha']).'
                             </td>
                             <td>                            
-                                '.utf8_encode($rs->fields['identificacion']).'
+                                '.utf8_encode($rs->fields['hora']).'
                             </td>
                             <td>                            
-                                '.utf8_encode($rs->fields['completo']).'
+                                '.utf8_encode($rs->fields['nombre_sucursal']).'
                             </td>
                             <td>                            
-                              '.utf8_encode($rs->fields['direccion']).'   
+                              '.utf8_encode($rs->fields['pais']).'   
                             </td>
                             <td>                            
-                              '.utf8_encode($rs->fields['telefono']).'   
+                              '.utf8_encode($rs->fields['remitente']).'   
                             </td>
                             <td>                            
-                              '.utf8_encode($rs->fields['correo']).'   
+                              '.utf8_encode($rs->fields['total']).'   
                             </td>
                              
                                                     
@@ -246,6 +250,15 @@ public function listEnvioBeneficiario()
             
         $tabla.="</tbody></table>";
         return $tabla;
+
+}
+
+public function consultaTasa(){
+
+$con = App::$base;
+    $sql = "SELECT tasa_dia from tbl_config where id_config = 1";
+    $rs = $con->dosql($sql, array());
+    return $rs->fields['tasa_dia'];
 
 }
 

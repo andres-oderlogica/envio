@@ -17,7 +17,7 @@ session_start();
   <head>    
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"> 
-   <title>Lista Envios</title>
+   <title>Config</title>
     
    <script src="../../../lib/js/jquery.js?v=<?php echo str_replace('.', '', microtime(true)); ?>"></script>
    <script src="../plantilla2/plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -27,11 +27,10 @@ session_start();
    <script src="../../../lib/bootbox.min.js"></script>
    <script src="../../../lib/bootstrap.min.js" data-semver="3.1.1" data-require="bootstrap"></script>
    <script src='../../../lib/data_table.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>
-   <!--<script src='js/ciudad.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>-->
-  <script src='js/envio.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>
-  <script src='js/tabla_envio_admin.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>
-  <script src='js/modal_editar_envio.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>  
-  <link href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />   
+   
+  <script src='js/config.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>
+  <link href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
+   
   <link rel="stylesheet" href="../plantilla2/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
@@ -72,6 +71,7 @@ session_start();
             height: 500px;
             }*/
         </style>
+ 
    </head>
 <body class="hold-transition skin-blue sidebar-mini">
    <?php
@@ -81,29 +81,47 @@ session_start();
   ?> 
  
 <div class="container-fluid">
-    <div class="col-md-12">
+ <form id="form_config" action="clases/control_config.php">
+             <div class="col-md-12">
                 <div class="panel panel-primary">
-                    <div class="panel-heading">Listado de Envios</div>
-                       <div class="panel-body">               
-                         <div class="table-responsive"> 
-                            <div id="ver_cargas2"></div>
-                         </div>        
-                       </div>
+                    <div class="panel-heading">Configuracion Global</div>
+                    <div class="panel-body"> 
+                      <div class="col-md-6">
+                        <label>Tasa del Dia</label>
+                        <input class="form-control" id="tasa_dia" name="tasa_dia"  type="number" step="any" required><br>
+
+                      </div>
+                      <div class="col-md-6">
+                        <label>Nombre de la Empresa</label>
+                                <input class="form-control" id="nombre_empresa" name="nombre_empresa" type="text" required><br>
+                      </div>
+                      
+                      <div class="col-md-6">
+                        <label>Nit</label>
+                                <input class="form-control" id="nit" name="nit" type="text" ><br>
+                        </div>
+                       <div class="col-md-6">
+                        <label>Digite Telefono o Celular</label>
+                                <input class="form-control" id="telefono" name="telefono" type="text" ><br>
+                            </div>
+                            
+                            <div class="col-md-12">
+                              <label>Digite Correo Electronico</label>
+                                <input class="form-control" id="correo" name="correo" type="email" ><br>
+                            </div> 
+
+                            
+                      <div class="col-md-3">                             
+                                <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+                      </div>                        
+                    </div>
                 </div>
-              </div>
-    
-</div>
-
-<?php
-//include 'modal_editar_cliente.php';
-?>
-
- <?php
-   
+            </div>
+       </form>     
+    </div>
+ <?php   
    include '../plantilla2/fin.php';
   ?>
-
-
 
 </body>
 </html>

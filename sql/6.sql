@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-12-2018 a las 00:06:32
+-- Tiempo de generación: 22-12-2018 a las 18:20:36
 -- Versión del servidor: 10.1.36-MariaDB
 -- Versión de PHP: 7.2.11
 
@@ -1546,7 +1546,7 @@ CREATE TABLE `tbl_config` (
 --
 
 INSERT INTO `tbl_config` (`id_config`, `tasa_dia`, `nombre_empresa`, `nit`, `telefono`, `correo`) VALUES
-(1, 6.2, 'EXPRESSCOIN', '8001754848', '8222222', 'carlos@gmail.com');
+(1, 6.5, 'EXPRESSCOIN', '8001754848', '8222222', 'carlos@gmail.com');
 
 -- --------------------------------------------------------
 

@@ -55,7 +55,7 @@
 			$sWhere .= ')';
 		}
 		$sWhere.=" order by user_id desc";
-		//include '../factura/pagination.php'; 
+		include 'pagination.php'; 
 
 		$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
 		$per_page = 10; 
@@ -116,6 +116,11 @@
 					<?php
 				}
 				?>
+				<tr>
+					<td colspan=9><span class="pull-right"><?
+					 echo paginate($reload, $page, $total_pages, $adjacents);
+					?></span></td>
+				</tr>
 				
 			  </table>
 			</div>
