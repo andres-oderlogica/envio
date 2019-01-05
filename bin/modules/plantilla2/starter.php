@@ -13,15 +13,14 @@ session_start();
     <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>B</b>S</span>
+      <span class="logo-mini"><b>E</b>C</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Envios</b> C</span>
+      <span class="logo-lg">EXPRESSCOIN </span>
     </a>
-
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
       <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
       <!-- Navbar Right Menu -->
@@ -108,7 +107,8 @@ session_start();
                       <!-- The progress bar -->
                       <div class="progress xs">
                         <!-- Change the css width attribute to simulate progress -->
-                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
+                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                           <span class="sr-only">20% Complete</span>
                         </div>
                       </div>
@@ -138,7 +138,7 @@ session_start();
 
                 <p>
                   <?php echo $_SESSION['nom']; ?>
-                  <small>2017</small>
+                  <small><?php echo date('Y'); ?></small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -182,7 +182,7 @@ session_start();
     <section class="sidebar">
 
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel">
+         <div class="user-panel">
         <div class="pull-left image">
           <img src="../plantilla2/dist/img/avatar5.png" class="img-circle" alt="User Image">
         </div>
@@ -194,15 +194,7 @@ session_start();
       </div>
 
       <!-- search form (Optional) -->
-    <!--  <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Buscar...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>-->
+
       <!-- /.search form -->
 <?php
 include '../../../core.php';
@@ -219,166 +211,68 @@ if($res == "Administrador")
 {
 ?>
       <!-- Sidebar Menu -->
-      <ul class="sidebar-menu">
-        <li class="header">CONTENIDO</li>
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MENU PRINCIPAL</li>
         <!-- Optionally, you can add icons to the links -->
-        
-         <li class="treeview">
-            <a href="../index/inicio.php"><i class="fa fa-laptop"></i> <span> Inicio</span>
-            </a>
-         </li>
+        <li><a href="../index/inicio.php"><i class="fa fa-link"></i> <span>Inicio</span></a></li>
+        <li><a href="../usuarios/usuarios.php"><i class="fa fa-link"></i> <span>Usuarios</span></a></li>
+        <li><a href="../sucursales/registro_sucursal.php"><i class="fa fa-link"></i> <span>Sucursales</span></a></li>
+        <li><a href="../asignar_sucursal/asignar.php"><i class="fa fa-link"></i> <span>Asignar Sucursal</span></a></li>
 
-         <li class="treeview">
-            <a href="../usuarios/usuarios.php"><i class="fa fa-circle-o text-blue"></i> <span> Usuarios</span>
-            </a>
-         </li>
 
-         <li class="treeview">
-            <a href="../sucursales/registro_sucursal.php"><i class="fa fa-edit"></i> <span> Sucursales</span>
-            </a>
-         </li>
-
-         <li class="treeview">
-            <a href="../asignar_sucursal/asignar.php"><i class="fa fa-dashboard"></i> <span>Asignar Sucursales</span>
-            </a>
-         </li>
-
-         <li class="treeview">
-            <a href="#"><i class="fa fa-book"></i> <span>Clientes</span>
+        <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>Clientes</span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
           </a>
           <ul class="treeview-menu">
-            
             <li> <a href="../clientes/registro_cliente.php"><i class="fa fa-circle-o text-red"></i>Registrar Clientes</a></li>
             <li><a href="../clientes/listar_cliente.php"><i class="fa fa-circle-o text-red"></i>Listado Clientes</a></li>
           </ul>
         </li>
 
         <li class="treeview">
-            <a href="#"><i class="fa fa-book"></i> <span>Envios</span>
+          <a href="#"><i class="fa fa-link"></i> <span>Envios</span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
           </a>
           <ul class="treeview-menu">
-            
             <li> <a href="../realizar_envio/registro_envio.php"><i class="fa fa-circle-o text-red"></i>Realizar Envio</a></li>
             <li><a href="../realizar_envio/listar_envio.php"><i class="fa fa-circle-o text-red"></i>Listado Envios</a></li>
           </ul>
         </li>
 
-        <li class="treeview">
-            <a href="../sistema/sistema.php"><i class="fa fa-dashboard"></i> <span>Configuracion</span>
-            </a>
-         </li>
-
-           <!--       <li class="treeview"> 
-            <a href="#"><i class="fa fa-dashboard"></i> <span>menu 1</span>
-             <span class="pull-right-container">
-               <i class="fa fa-angle-left pull-right"></i>
-             </span>
-            </a>
-          <ul class="treeview-menu">
-              <li><a href="../usuarios/usuarios.php"><i class="fa fa-circle-o text-blue"></i>Admin Docentes y/o Usuarios</a></li>
-                <li><a href="../docente/registro_docente.php"><i class="fa fa-circle-o text-blue"></i>Listado Docentes</a></li>
-          </ul>
-        </li>
-
-        <li class="treeview"> 
-            <a href="#"><i class="fa fa-dashboard"></i> <span>menu 2</span>
-             <span class="pull-right-container">
-               <i class="fa fa-angle-left pull-right"></i>
-             </span>
-            </a>
-          <ul class="treeview-menu">
-              <li><a href="../estudiante/registro_estudiante.php"><i class="fa fa-circle-o text-blue"></i>Registrar Estudiantes</a></li>
-                <li><a href="../estudiante/listar_estudiantes.php"><i class="fa fa-circle-o text-blue"></i>Administrar Estudiantes</a></li>
-          </ul>
-        </li>
-        <li class="treeview">          
-          <a href="#"><i class="fa fa-dashboard"></i> <span>Administración</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">-->
-           <!-- <li><a href="../estudiante/registro_estudiante.php"><i class="fa fa-circle-o text-red"></i>Estudiantes</a></li>-->            
-      <!--      <li><a href="../grados/registro_grado.php"><i class="fa fa-circle-o text-red"></i>Grados</a></li>
-            <li><a href="../materia/registro_materia.php"><i class="fa fa-circle-o text-red"></i>Materias</a></li>
-            <li><a href="../gradoxmateria/registro_gradoxmateria.php"><i class="fa fa-circle-o text-red"></i>Materias x Grado</a></li>
-            <li><a href="../docentexgrado/registro_docentexgrado.php"><i class="fa fa-circle-o text-red"></i>Docente x Grado</a></li>
-          </ul>
-        </li>
-       
-       
-        </li>
-     
-
-
-         <li class="treeview">
-            <a href="#"><i class="fa fa-book"></i> <span>Reportes</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="../boletines/seleccion_datos_promedio.php"><i class="fa fa-circle-o text-red"></i>Generar Consolidado de Notas</a></li>
-            
-          </ul>
-        </li>-->
+        <li><a href="../sistema/sistema.php"><i class="fa fa-dashboard"></i> <span>Configuracion</span></a></li>
 
       </ul>
+  
+      <!-- /.sidebar-menu -->
 
-      <?php
+       <?php
       }
      if($res == "Empleado")
       {
       ?>
-       <!-- Sidebar Menu -->
-      <ul class="sidebar-menu">
-        <li class="header">CONTENIDO</li>
-        <!-- Optionally, you can add icons to the links -->    
-        <li><a href="../index/inicio.php"><i class="fa fa-laptop"></i> <span> Inicio</span></a></li>
-        <li><a href="../notas/registrar_notas.php"><i class="fa fa-book"></i> <span>Registrar Notas</span></a></li>
-       <!--   <li><a href="../../../login.php?logout"><i class="fa fa-link"></i> <span>Salir</span></a></li>
-       <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Administracion</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#">Link in level 2</a></li>
-            <li><a href="#">Link in level 2</a></li>
-          </ul>
-        </li>-->
-      </ul>
+    
+
+
+
+
+
       <?php
-    }
+      }
      if($res == 3)
       {
       ?>
-       <!-- Sidebar Menu -->
-      <ul class="sidebar-menu">
-        <li class="header">CONTENIDO</li>
-        <!-- Optionally, you can add icons to the links -->    
-        <li><a href="../index/inicio.php"><i class="fa fa-laptop"></i> <span> Inicio</span></a></li>
-        <li><a href="../estudiante/bloquear_notas.php"><i class="fa fa-book"></i> <span>Activar/Desactivar Ver Notas</span></a></li>
-       <!--   <li><a href="../../../login.php?logout"><i class="fa fa-link"></i> <span>Salir</span></a></li>
-       <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Administracion</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#">Link in level 2</a></li>
-            <li><a href="#">Link in level 2</a></li>
-          </ul>
-        </li>-->
-      </ul>
+      
+
+
+
+
+
+
       <?php
     }
     ?>
@@ -388,29 +282,18 @@ if($res == "Administrador")
      if($res == 4)
       {
       ?>
-       <!-- Sidebar Menu -->
-      <ul class="sidebar-menu">
-        <li class="header">CONTENIDO</li>
-        <!-- Optionally, you can add icons to the links -->    
-        <li><a href="../index/inicio.php"><i class="fa fa-laptop"></i> <span> Inicio</span></a></li>
-        <li class="treeview">
-            <a href="#"><i class="fa fa-book"></i> <span>Reportes</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="../boletines/seleccion_datos_promedio.php"><i class="fa fa-circle-o text-red"></i>Generar Consolidado de Notas</a></li>
-            
-          </ul>
-        </li>
-      </ul>
+      
+
+
+
+
+
       <?php
     }
     ?>
 
 
-      <!-- /.sidebar-menu -->
+
     </section>
     <!-- /.sidebar -->
   </aside>
@@ -418,17 +301,7 @@ if($res == "Administrador")
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-     <!-- <h1>
-        Page Header
-        <small>Optional description</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
-      </ol>-->
-    </section>
+
 
     <!-- Main content -->
-    <section class="content">
-
+    <section class="content container-fluid">

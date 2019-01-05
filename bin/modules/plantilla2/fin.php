@@ -1,4 +1,4 @@
-  </section>
+</section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -7,10 +7,10 @@
   <footer class="main-footer">
     <!-- To the right -->
     <div class="pull-right hidden-xs">
-      Version 001
+      Version 001 <?php echo date('d-m-Y'); ?>
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; JAPrograms 2017 <a href="#">Company</a>.</strong> Todos los derechos Reservados.
+    <strong>Copyright &copy; <?php echo date('Y'); ?><a href="#"> JASoftware</a>.</strong> Todos los derechos reservados.
   </footer>
 
   <!-- Control Sidebar -->
@@ -24,10 +24,10 @@
     <div class="tab-content">
       <!-- Home tab content -->
       <div class="tab-pane active" id="control-sidebar-home-tab">
-        <h3 class="control-sidebar-heading"></h3>
+        <h3 class="control-sidebar-heading">Recent Activity</h3>
         <ul class="control-sidebar-menu">
           <li>
-            <a href="javascript::;">
+            <a href="javascript:;">
               <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
               <div class="menu-info">
@@ -43,12 +43,12 @@
         <h3 class="control-sidebar-heading">Tasks Progress</h3>
         <ul class="control-sidebar-menu">
           <li>
-            <a href="javascript::;">
+            <a href="javascript:;">
               <h4 class="control-sidebar-subheading">
                 Custom Template Design
                 <span class="pull-right-container">
-                  <span class="label label-danger pull-right">70%</span>
-                </span>
+                    <span class="label label-danger pull-right">70%</span>
+                  </span>
               </h4>
 
               <div class="progress progress-xxs">
@@ -87,18 +87,7 @@
   </aside>
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
+  immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-
-<!-- REQUIRED JS SCRIPTS -->
-
-<!-- jQuery 2.2.3 -->
-
-
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
-
