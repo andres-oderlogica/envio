@@ -61,21 +61,37 @@ session_start();
                     </div>
                 </div>
 
-
                           <div class="panel panel-primary">
-                               <div class="panel-heading">Valor Envio</div>
-                                   <div class="panel-body">
-                                       
-                                        <div class="col-md-12">                                            
-                                          <input class="form-control" id="total_pesos" name="total_pesos" placeholder="Total Pesos" type="number" step="any" required><br>         
-                                         </div>
-                                        <div class="col-md-12">                                            
-                                           <input class="form-control" id="total_bfs" name="total_bfs" placeholder="Total BSS" type="number" step="any">        
+                          
+                               <div class="panel-heading">Pais de Destino </div>
+                                   <div class="panel-body">                                       
+                                         <div class="col-md-12">                              
+                                            <select class="form-control select2" style="width: 100%;" id="id_pais">
+                                            <option value="115" selected="selected"> Venezuela </option>
+                                            </select>   
+                                            <input name="id_pais_beneficiario" id="id_pais_beneficiario" type="hidden">      
                                          </div>                                            
                                   </div>
                           </div>
 
 
+
+                          <div class="panel panel-primary">
+                               <div class="panel-heading">Valor Envio</div>
+                                   <div class="panel-body">                                       
+                                        <div class="col-md-12">                                            
+                                          <input class="form-control" id="total_pesos" name="total_pesos" placeholder="Total Pesos" type="number" step="any" required><br>         
+                                         </div>
+                                        <div id = "calculado" class="col-md-12">                                            
+                                           <input class="form-control" id="total_bfs" name="total_bfs" placeholder="Total BSS" type="number" step="any">        
+                                         </div>
+                                         <div id = "sinCalcular" class="col-md-12">                                            
+                                           <input class="form-control" id="total_bfs_manual" name="total_bfs_manual" placeholder="Total BSS Manual" type="number" step="any">        
+                                         </div>                                            
+                                  </div>
+                          </div>
+
+                       
             </div>
 
              <div class="col-md-6">

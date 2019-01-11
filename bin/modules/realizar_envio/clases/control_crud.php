@@ -11,6 +11,7 @@ $telefono = $_POST['telefono'];
 $correo = $_POST['correo'];
 $banco    = $_POST['id_banco'];
 $cuenta    = $_POST['numero_cuenta'];
+$idFactura     = $_POST['idFactura'];
 
 //extract($_POST);
 $disc   = new regEnvio();
@@ -64,6 +65,9 @@ switch ($opcion) {
 				$res = $disc->consultaTasa();
 				echo json_encode($res);
 				break;
+				case '7':
+					$res = $disc->editarEstadoEnvio($idFactura);
+					break;
 }
 
 ?>

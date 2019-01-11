@@ -6,7 +6,7 @@ include_once Config::$home_bin.Config::$ds.'db'.Config::$ds.'active_table.php';
 class regEnvio
 {
 
-public function reg_factura($cliente_rem,$cliente_ben,$descripcion,$total_pesos,$total_bss)  
+public function reg_factura($cliente_rem,$cliente_ben,$descripcion,$total_pesos,$total_bss,$total_bfs_manual, $id_pais_beneficiario)  
      
     {
         date_default_timezone_set('America/Bogota');
@@ -22,8 +22,11 @@ public function reg_factura($cliente_rem,$cliente_ben,$descripcion,$total_pesos,
         $reg->hora = $newDateTime;
         $reg->descripcion = $descripcion;
         $reg->total_pesos = $total_pesos;
-        $reg->total_bfs = $total_bss; 
-        $reg->id_usuario = $_SESSION['user_id']; 
+        $reg->total_bfs = $total_bss;
+        $reg->total_bfs_manual = $total_bfs_manual;  
+        $reg->id_usuario = $_SESSION['user_id'];
+        $reg->id_estado = 3; 
+        $reg->id_pais_beneficiario = $id_pais_beneficiario;
         $reg->Save();
          //var_dump($reg);
         //return $reg->id_estudiante;
@@ -37,6 +40,7 @@ public function listEnvio()
             `tbl_factura`.`id_factura`,
             `tbl_factura`.`fecha`,
             `tbl_factura`.`hora`,
+            `tbl_factura`.`id_estado`,
             CONCAT('$ ',`tbl_factura`.`total_pesos`) as total,
             `tbl_sucursal`.`nombre_sucursal`,
             `tbl_sucursal`.`id_pais`,
@@ -45,7 +49,7 @@ public function listEnvio()
             `tbl_cliente`.`apellidos`) as remitente,
             `tbl_sucursal`.`pais`,                   
                \"
-              <button type=\'button\' class=\'btn btn-primary btn-sm btn_edit\' data-title=\'Edit\' data-toggle=\'modal\' data-target=\'#myModal\' >
+              <button type=\'button\' class=\'btn btn-primary btn-sm btn_edit\' data-title=\'Edit\'>
                <span class=\'glyphicon glyphicon-pencil\'></span></button>
                </div>
                 \" 
@@ -75,18 +79,20 @@ public function listEnvio()
                         <th id="yw9_c6">Pais</th>
                         <th id="yw9_c6">Remitente</th>
                         <th id="yw9_c6">Total Envio</th>
+                        <th id="yw9_c6">Estado Envio</th>
                         <th id="yw9_c7">Editar</th>
-                        <th id="yw9_c8">Eliminar</th>
+                       
                         </tr>
                         </thead>
                         <tbody>';
 		          while (!$rs->EOF) 
                    {
-                    if ($rs->fields['id_estado']==1){
-                          $label_class='label-success';}
-                      if($rs->fields['id_estado']==2){
-                          $text_estado="En Tramite";
-                          $label_class='label-warning';}
+                    if ($rs->fields['id_estado']==3){
+                      $text_estado="En Proceso";
+                          $label_class='label-info';}
+                      if($rs->fields['id_estado']==4){
+                          $text_estado="Enviado";
+                        $label_class='label-success';}
                       
                    	$tabla.='<tr >  
                             <td>                            
@@ -110,14 +116,12 @@ public function listEnvio()
                             <td>                            
                               '.utf8_encode($rs->fields['total']).'   
                             </td>
-                             
+                            <td align= "center">                            
+                              <span class="label '.$label_class.'">'.$text_estado.'</span>   
+                            </td>                             
                                                     
-                            <td align="center" width= "30" onclick="editar('.$rs->fields['id_cliente'].')">                            
+                            <td align="center" width= "30" onclick="editar('.$rs->fields['id_factura'].')">                            
                                 '.utf8_encode($rs->fields['editar']).'
-                            </td>
-
-                            <td align="center" width= "30" onclick="eliminar('.$rs->fields['id_cliente'].')">                            
-                                '.utf8_encode($rs->fields['borrar']).'
                             </td>' ;                                                                               
                             
             $tabla.= '</tr>';                                     
@@ -268,6 +272,16 @@ public function eliminar($id)
     $reg->load("id_cliente = {$id}");
     $reg->Delete();
 }
+
+
+public function editarEstadoEnvio($id)
+{
+    $reg              = new Factura('tbl_factura');
+    $reg->load("id_factura = {$id}");
+    $reg->id_estado = 4;
+    $reg->Save();
+}
+
 
 
 

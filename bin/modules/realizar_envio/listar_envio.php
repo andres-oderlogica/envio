@@ -19,7 +19,7 @@ session_start();
    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"> 
    <title>Lista Envios</title>
      <?php include("../plantilla2/head.php");?>   
-    <script src='js/envio.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>
+   <!-- <script src='js/envio.js?v=<?php //echo str_replace('.', '', microtime(true)); ?>'></script>-->
     <script src='js/tabla_envio_admin.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>
     <script src='js/modal_editar_envio.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>  
     <link rel="stylesheet" href="../../../lib/css/table.css"> 

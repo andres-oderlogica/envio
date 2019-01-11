@@ -48,6 +48,47 @@ function verCargas()
 
  verCargas()
 
+function editar(id)
+{
+bootbox.confirm({
+    message: "Desea Cambiar el estado del envio ?",
+    buttons: {
+        confirm: {
+            label: 'Si',
+            className: 'btn-success'
+        },
+        cancel: {
+            label: 'No',
+            className: 'btn-danger'
+        }
+    },
+    callback: function (result) {
+    if(result){
+    $.ajax({
+        url: 'clases/control_crud.php',
+        type: "POST",
+        dataType:'json',
+        data:{opcion:7, idFactura:id},
+        success: function (data)
+        {
+             if (!data.eliminado)
+                {
+                    bootbox.alert('Error al eliminar el dato');
+                }
+                else
+                {
+                    //bootbox.alert("Se elimino con exito");                        
+                                
+                }
 
+        },
+         complete: function () {
+               verCargas()  
+            }
+        });
+}}
+
+    })
+}
 
 

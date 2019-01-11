@@ -1,6 +1,6 @@
 $(document).ready(function($){
-
-
+$('.select2').select2()
+$('#sinCalcular').hide();
 //$('#tabla').hide();
 //$('#act_add').prop('disabled', true);
 
@@ -14,33 +14,32 @@ $(document).ready(function($){
 	{		
 		for (var i = 0; i < datos.length; i++)
     	{
+    		console.log()
 
-    		$("#id_tipo").append('<option value = "'+datos[i].id_tipo+'">'+datos[i].descripcion+'</option>');
+    		$("#id_pais").append('<option value = "'+datos[i].id_pais+'">'+datos[i].pais+'</option>');
 	     
 		 }		 
 
 	}
 
 	});
+	$("#id_pais_beneficiario").val(115);
+	$('select#id_pais').on('change',function(){
+     var valor = $(this).val();    
+       $("#id_pais_beneficiario").val(valor);
+       if($("#id_pais_beneficiario").val() == 115)
+       {
+         $('#sinCalcular').hide();
+         $('#calculado').show();
+       }
+       else
+       {
+        $('#sinCalcular').show();
+        $('#calculado').hide();
+       }
 
-	$.getJSON('combo/control_combo.php', {opcion:2},
-				function(datos){
-	    if(datos==0)
-	    {		
-			
-		}
-	else
-	{		
-		for (var i = 0; i < datos.length; i++)
-    	{
-
-    		$("#id_banco").append('<option value = "'+datos[i].id_banco+'">'+datos[i].descripcion+'</option>');
-	     
-		 }		 
-
-	}
-
-	});
+    });
+	
 
 
  /*$('select#combo').on('change',function(){
@@ -65,12 +64,4 @@ $(document).ready(function($){
              });*/
       
 
-
-
-
-
- 
-
-
- 
 });

@@ -12,15 +12,15 @@ class comboCliente
 	function getTipo()
 	{	  
        $sql="SELECT * 
-  			from tbl_tipo_documento
-  			order by descripcion asc
+  			from paises
+  			order by Pais asc
   			 ";
 		$rs = $this->db->dosql($sql, array()); 
         while (!$rs->EOF) 
            {
 	         $data[] = array(
-	         	'id_tipo' => $rs->fields['id_tipo'],
-	         	'descripcion' => $rs->fields['descripcion']
+	         	'id_pais' => $rs->fields['id_pais'],
+	         	'pais' => $rs->fields['Pais']
 	         	);	                             
 	
 	          $rs->MoveNext();	    

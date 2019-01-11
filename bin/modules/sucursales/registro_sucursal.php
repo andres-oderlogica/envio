@@ -19,6 +19,41 @@ session_start();
     <script src='js/sucursal.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>
     <script src='js/tabla_sucursal.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script>  
     <script src='js/modal_editar_sucursal.js?v=<?php echo str_replace('.', '', microtime(true)); ?>'></script> 
+    
+    <style>
+             #pre-load-web {
+                width:100%;
+                position:absolute;
+                background:rgba(0,0,0,0.5);
+                left:0px;
+                top:0px;
+                z-index:100000
+            }
+            #pre-load-web #imagen-load{
+                left:50%;
+                margin-left:-30px;
+                position:absolute
+            }
+            #content{
+                padding-top: 15%;
+                padding-left: 20%;
+                padding-right: 20%;
+                text-align: center;
+            }
+         
+            .dataTables_filter label{
+                display:block !important;
+            }
+            #myTable_paginate{
+                text-align: -webkit-center;
+            }
+            #myTable_info{
+                font-weight: bold;
+            }
+           /* .panel-body {
+            height: 500px;
+            }*/
+        </style>
    </head>
 <body class="hold-transition skin-blue fixed sidebar-mini">
    <?php     
