@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-01-2019 a las 00:04:06
+-- Tiempo de generación: 11-01-2019 a las 01:11:57
 -- Versión del servidor: 10.1.36-MariaDB
 -- Versión de PHP: 7.2.11
 
@@ -1549,7 +1549,7 @@ CREATE TABLE `tbl_config` (
 --
 
 INSERT INTO `tbl_config` (`id_config`, `tasa_dia`, `nombre_empresa`, `nit`, `telefono`, `correo`) VALUES
-(1, 4.5, 'EXPRESSCOIN', '8001754848', '8222222', 'carlos@gmail.com');
+(1, 6.2, 'EXPRESSCOIN', '8001754848', '8222222', 'carlos@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -1580,8 +1580,7 @@ INSERT INTO `tbl_factura` (`id_factura`, `id_cliente_rem`, `id_cliente_ben`, `fe
 (1, 2, 1, '2019-01-10', '02:07 PM', 'realizado', 1000000, 161290.32, 0, 1, 3, 115),
 (2, 1, 2, '2019-01-10', '02:28 PM', 'sin calculo', 10000, 1612.9, 6500, 1, 3, 114),
 (3, 2, 1, '2019-01-10', '02:33 PM', 'enviar', 1000000, 161290.32, 0, 1, 3, 115),
-(4, 2, 1, '2019-01-10', '02:33 PM', '', 1000, 0, 20, 1, 4, 114),
-(5, 1, 2, '2019-01-10', '07:19 PM', '', 112, 0, 0, 1, 3, 114);
+(4, 2, 1, '2019-01-10', '02:33 PM', '', 1000, 0, 20, 1, 4, 114);
 
 -- --------------------------------------------------------
 
@@ -1833,7 +1832,7 @@ ALTER TABLE `tbl_config`
 -- AUTO_INCREMENT de la tabla `tbl_factura`
 --
 ALTER TABLE `tbl_factura`
-  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_sucursal`
