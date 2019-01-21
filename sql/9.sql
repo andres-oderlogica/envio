@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-01-2019 a las 02:58:31
+-- Tiempo de generación: 15-01-2019 a las 00:04:06
 -- Versión del servidor: 10.1.36-MariaDB
 -- Versión de PHP: 7.2.11
 
@@ -1497,18 +1497,10 @@ CREATE TABLE `tbl_banco` (
 --
 
 INSERT INTO `tbl_banco` (`id_banco`, `descripcion`) VALUES
-(1, 'BANESCO'),
-(2, 'MERCANTIL'),
-(3, 'BBVA PROVINCIAL'),
-(4, 'EXTERIOR'),
-(5, 'BICENTENARIO'),
-(6, 'BANCO OCCIDENTAL DE DESCUENTO'),
-(7, 'BANCO DE VENEZUELA'),
-(8, 'BANCO NACIONAL DE CREDITO'),
-(9, 'SOFITASA'),
-(10, 'BANCARIBE'),
-(11, 'BANCO DEL TESORO'),
-(12, 'OTRO');
+(1, 'Banco de Bogota'),
+(2, 'Banco Popular'),
+(3, 'Banco Caja Social'),
+(4, 'Bancolombia');
 
 -- --------------------------------------------------------
 
@@ -1577,25 +1569,19 @@ CREATE TABLE `tbl_factura` (
   `total_bfs_manual` double DEFAULT NULL,
   `id_usuario` int(11) DEFAULT NULL,
   `id_estado` int(11) DEFAULT NULL,
-  `id_pais_beneficiario` int(11) DEFAULT NULL,
-  `sufijo` varchar(50) DEFAULT NULL
+  `id_pais_beneficiario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbl_factura`
 --
 
-INSERT INTO `tbl_factura` (`id_factura`, `id_cliente_rem`, `id_cliente_ben`, `fecha`, `hora`, `descripcion`, `total_pesos`, `total_bfs`, `total_bfs_manual`, `id_usuario`, `id_estado`, `id_pais_beneficiario`, `sufijo`) VALUES
-(1, 2, 1, '2019-01-20', '06:00 PM', 'Realizada', 1000000, 222222.22, 0, 1, 3, 115, 'FACT-001'),
-(2, 1, 2, '2019-01-20', '06:01 PM', '', 1000000, 222222.22, 0, 1, 3, 115, 'FACT-002'),
-(3, 1, 2, '2019-01-20', '07:17 PM', '', 1000, 222.22, 0, 1, 3, 115, 'FACT-003'),
-(4, 2, 1, '2019-01-20', '07:18 PM', '', 10000, 2222.22, 0, 1, 3, 115, 'FACT-004'),
-(5, 2, 1, '2019-01-20', '07:19 PM', '', 10000, 2222.22, 0, 1, 3, 115, 'FACT-005'),
-(6, 2, 1, '2019-01-20', '07:22 PM', '', 10100, 2244.44, 0, 1, 3, 115, 'FACT-006'),
-(7, 2, 1, '2019-01-20', '07:22 PM', '', 100000, 22222.22, 0, 1, 3, 115, 'FACT-007'),
-(8, 2, 1, '2019-01-20', '07:24 PM', '', 10000, 2222.22, 0, 1, 3, 115, 'FACT-008'),
-(9, 2, 1, '2019-01-20', '07:45 PM', '', 1000000, 222222.22, 0, 1, 3, 115, 'FACT-009'),
-(10, 2, 1, '2019-01-20', '08:56 PM', '', 2000000, 444444.44, 0, 1, 3, 115, 'FACT-0010');
+INSERT INTO `tbl_factura` (`id_factura`, `id_cliente_rem`, `id_cliente_ben`, `fecha`, `hora`, `descripcion`, `total_pesos`, `total_bfs`, `total_bfs_manual`, `id_usuario`, `id_estado`, `id_pais_beneficiario`) VALUES
+(1, 2, 1, '2019-01-10', '02:07 PM', 'realizado', 1000000, 161290.32, 0, 1, 3, 115),
+(2, 1, 2, '2019-01-10', '02:28 PM', 'sin calculo', 10000, 1612.9, 6500, 1, 3, 114),
+(3, 2, 1, '2019-01-10', '02:33 PM', 'enviar', 1000000, 161290.32, 0, 1, 3, 115),
+(4, 2, 1, '2019-01-10', '02:33 PM', '', 1000, 0, 20, 1, 4, 114),
+(5, 1, 2, '2019-01-10', '07:19 PM', '', 112, 0, 0, 1, 3, 114);
 
 -- --------------------------------------------------------
 
@@ -1829,7 +1815,7 @@ ALTER TABLE `paises`
 -- AUTO_INCREMENT de la tabla `tbl_banco`
 --
 ALTER TABLE `tbl_banco`
-  MODIFY `id_banco` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_banco` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_cliente`
@@ -1847,7 +1833,7 @@ ALTER TABLE `tbl_config`
 -- AUTO_INCREMENT de la tabla `tbl_factura`
 --
 ALTER TABLE `tbl_factura`
-  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_sucursal`

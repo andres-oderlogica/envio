@@ -5,6 +5,7 @@ include_once Config::$home_bin.Config::$ds.'db'.Config::$ds.'active_table.php';
  class Factura extends ADOdb_Active_Record{}
 class regEnvio
 {
+  private $id;
 
 public function reg_factura($cliente_rem,$cliente_ben,$descripcion,$total_pesos,$total_bss,$total_bfs_manual, $id_pais_beneficiario)  
      
@@ -29,8 +30,18 @@ public function reg_factura($cliente_rem,$cliente_ben,$descripcion,$total_pesos,
         $reg->id_pais_beneficiario = $id_pais_beneficiario;
         $reg->Save();
          //var_dump($reg);
-        //return $reg->id_estudiante;
+        $this->id = $reg->id_factura;
+        $this->editarSufijo();
+        return $reg->id_factura;
     }
+
+    public function editarSufijo()
+{
+    $reg              = new Factura('tbl_factura');
+    $reg->load("id_factura = {$this->id}");
+    $reg->sufijo = "FACT-00".$this->id;
+    $reg->Save();
+}
 
 
 public function listEnvio()
@@ -39,6 +50,7 @@ public function listEnvio()
     $sql = "SELECT 
             `tbl_factura`.`id_factura`,
             `tbl_factura`.`fecha`,
+            `tbl_factura`.`sufijo`,
             `tbl_factura`.`hora`,
             `tbl_factura`.`id_estado`,
             CONCAT('$ ',`tbl_factura`.`total_pesos`) as total,
@@ -96,7 +108,7 @@ public function listEnvio()
                       
                    	$tabla.='<tr >  
                             <td>                            
-                                '.utf8_encode($rs->fields['id_factura']).'
+                                '.utf8_encode($rs->fields['sufijo']).'
                             </td>
                             <td>                            
                                 '.utf8_encode($rs->fields['fecha']).'

@@ -20,12 +20,12 @@ $('#form_envio').submit(function (e)
                     bootbox.alert('Se presento un error al registrar el dato');
                 }
                     bootbox.alert("Se Guardo con exito", function(){ 
+                         window.open("imprimir.php");
                                 
                                 })
                 
             },
-            complete: function () {
-              
+            complete: function () {              
                 $('#identificacion').val("") 
                 $('#nombre').val("") 
                 $('#id_cliente_rem').val("")
@@ -48,6 +48,12 @@ $('#form_envio').submit(function (e)
     });
 
  });
+
+function imprimir(){
+
+
+
+}
 
 
 $(document).ready(function($){
